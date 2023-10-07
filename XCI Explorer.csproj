@@ -9,6 +9,8 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <NeutralLanguage>aa</NeutralLanguage>
+    <StartupObject></StartupObject>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
