@@ -90,7 +90,7 @@ namespace XCI_Explorer
             // B_LoadROM
             // 
             B_LoadROM.Location = new System.Drawing.Point(7, 22);
-            B_LoadROM.Margin = new Padding(6, 6, 6, 6);
+            B_LoadROM.Margin = new Padding(6);
             B_LoadROM.Name = "B_LoadROM";
             B_LoadROM.Size = new System.Drawing.Size(138, 42);
             B_LoadROM.TabIndex = 0;
@@ -102,7 +102,7 @@ namespace XCI_Explorer
             // 
             TB_File.AllowDrop = true;
             TB_File.Location = new System.Drawing.Point(156, 24);
-            TB_File.Margin = new Padding(6, 6, 6, 6);
+            TB_File.Margin = new Padding(6);
             TB_File.Name = "TB_File";
             TB_File.ReadOnly = true;
             TB_File.Size = new System.Drawing.Size(488, 30);
@@ -115,7 +115,7 @@ namespace XCI_Explorer
             TABC_Main.Controls.Add(TABP_XCI);
             TABC_Main.Controls.Add(tabPage2);
             TABC_Main.Location = new System.Drawing.Point(7, 76);
-            TABC_Main.Margin = new Padding(6, 6, 6, 6);
+            TABC_Main.Margin = new Padding(6);
             TABC_Main.Name = "TABC_Main";
             TABC_Main.SelectedIndex = 0;
             TABC_Main.Size = new System.Drawing.Size(667, 1022);
@@ -147,9 +147,9 @@ namespace XCI_Explorer
             TABP_XCI.Controls.Add(label1);
             TABP_XCI.Controls.Add(TB_TID);
             TABP_XCI.Location = new System.Drawing.Point(4, 33);
-            TABP_XCI.Margin = new Padding(6, 6, 6, 6);
+            TABP_XCI.Margin = new Padding(6);
             TABP_XCI.Name = "TABP_XCI";
-            TABP_XCI.Padding = new Padding(6, 6, 6, 6);
+            TABP_XCI.Padding = new Padding(6);
             TABP_XCI.Size = new System.Drawing.Size(659, 985);
             TABP_XCI.TabIndex = 0;
             TABP_XCI.Text = "Main";
@@ -161,7 +161,7 @@ namespace XCI_Explorer
             // TB_GameRev
             // 
             TB_GameRev.Location = new System.Drawing.Point(28, 126);
-            TB_GameRev.Margin = new Padding(6, 6, 6, 6);
+            TB_GameRev.Margin = new Padding(6);
             TB_GameRev.Name = "TB_GameRev";
             TB_GameRev.ReadOnly = true;
             TB_GameRev.Size = new System.Drawing.Size(431, 194);
@@ -181,7 +181,7 @@ namespace XCI_Explorer
             // B_TrimXCI
             // 
             B_TrimXCI.Location = new System.Drawing.Point(563, 356);
-            B_TrimXCI.Margin = new Padding(6, 6, 6, 6);
+            B_TrimXCI.Margin = new Padding(6);
             B_TrimXCI.Name = "B_TrimXCI";
             B_TrimXCI.Size = new System.Drawing.Size(70, 92);
             B_TrimXCI.TabIndex = 21;
@@ -192,7 +192,7 @@ namespace XCI_Explorer
             // TB_ProdCode
             // 
             TB_ProdCode.Location = new System.Drawing.Point(473, 282);
-            TB_ProdCode.Margin = new Padding(6, 6, 6, 6);
+            TB_ProdCode.Margin = new Padding(6);
             TB_ProdCode.Name = "TB_ProdCode";
             TB_ProdCode.ReadOnly = true;
             TB_ProdCode.Size = new System.Drawing.Size(156, 30);
@@ -218,9 +218,9 @@ namespace XCI_Explorer
             groupBox2.Controls.Add(PB_GameIcon);
             groupBox2.Controls.Add(CB_RegionName);
             groupBox2.Location = new System.Drawing.Point(28, 570);
-            groupBox2.Margin = new Padding(6, 6, 6, 6);
+            groupBox2.Margin = new Padding(6);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(6, 6, 6, 6);
+            groupBox2.Padding = new Padding(6);
             groupBox2.Size = new System.Drawing.Size(605, 356);
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
@@ -240,7 +240,7 @@ namespace XCI_Explorer
             // TB_Dev
             // 
             TB_Dev.Location = new System.Drawing.Point(11, 276);
-            TB_Dev.Margin = new Padding(6, 6, 6, 6);
+            TB_Dev.Margin = new Padding(6);
             TB_Dev.Name = "TB_Dev";
             TB_Dev.ReadOnly = true;
             TB_Dev.Size = new System.Drawing.Size(279, 30);
@@ -259,7 +259,7 @@ namespace XCI_Explorer
             // TB_Name
             // 
             TB_Name.Location = new System.Drawing.Point(11, 70);
-            TB_Name.Margin = new Padding(6, 6, 6, 6);
+            TB_Name.Margin = new Padding(6);
             TB_Name.Name = "TB_Name";
             TB_Name.ReadOnly = true;
             TB_Name.Size = new System.Drawing.Size(279, 30);
@@ -279,7 +279,7 @@ namespace XCI_Explorer
             // 
             PB_GameIcon.BackgroundImageLayout = ImageLayout.Zoom;
             PB_GameIcon.Location = new System.Drawing.Point(315, 40);
-            PB_GameIcon.Margin = new Padding(6, 6, 6, 6);
+            PB_GameIcon.Margin = new Padding(6);
             PB_GameIcon.Name = "PB_GameIcon";
             PB_GameIcon.Size = new System.Drawing.Size(279, 294);
             PB_GameIcon.TabIndex = 18;
@@ -290,7 +290,7 @@ namespace XCI_Explorer
             CB_RegionName.DropDownStyle = ComboBoxStyle.DropDownList;
             CB_RegionName.FormattingEnabled = true;
             CB_RegionName.Location = new System.Drawing.Point(11, 168);
-            CB_RegionName.Margin = new Padding(6, 6, 6, 6);
+            CB_RegionName.Margin = new Padding(6);
             CB_RegionName.Name = "CB_RegionName";
             CB_RegionName.Size = new System.Drawing.Size(279, 32);
             CB_RegionName.TabIndex = 17;
@@ -313,9 +313,9 @@ namespace XCI_Explorer
             groupBox1.Controls.Add(B_ImportCert);
             groupBox1.Controls.Add(B_ExportCert);
             groupBox1.Location = new System.Drawing.Point(28, 460);
-            groupBox1.Margin = new Padding(6, 6, 6, 6);
+            groupBox1.Margin = new Padding(6);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(6, 6, 6, 6);
+            groupBox1.Padding = new Padding(6);
             groupBox1.Size = new System.Drawing.Size(605, 98);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
@@ -324,7 +324,7 @@ namespace XCI_Explorer
             // B_ViewCert
             // 
             B_ViewCert.Location = new System.Drawing.Point(308, 36);
-            B_ViewCert.Margin = new Padding(6, 6, 6, 6);
+            B_ViewCert.Margin = new Padding(6);
             B_ViewCert.Name = "B_ViewCert";
             B_ViewCert.Size = new System.Drawing.Size(136, 42);
             B_ViewCert.TabIndex = 3;
@@ -335,7 +335,7 @@ namespace XCI_Explorer
             // B_ClearCert
             // 
             B_ClearCert.Location = new System.Drawing.Point(458, 36);
-            B_ClearCert.Margin = new Padding(6, 6, 6, 6);
+            B_ClearCert.Margin = new Padding(6);
             B_ClearCert.Name = "B_ClearCert";
             B_ClearCert.Size = new System.Drawing.Size(136, 42);
             B_ClearCert.TabIndex = 2;
@@ -346,7 +346,7 @@ namespace XCI_Explorer
             // B_ImportCert
             // 
             B_ImportCert.Location = new System.Drawing.Point(158, 36);
-            B_ImportCert.Margin = new Padding(6, 6, 6, 6);
+            B_ImportCert.Margin = new Padding(6);
             B_ImportCert.Name = "B_ImportCert";
             B_ImportCert.Size = new System.Drawing.Size(136, 42);
             B_ImportCert.TabIndex = 1;
@@ -357,7 +357,7 @@ namespace XCI_Explorer
             // B_ExportCert
             // 
             B_ExportCert.Location = new System.Drawing.Point(11, 36);
-            B_ExportCert.Margin = new Padding(6, 6, 6, 6);
+            B_ExportCert.Margin = new Padding(6);
             B_ExportCert.Name = "B_ExportCert";
             B_ExportCert.Size = new System.Drawing.Size(136, 42);
             B_ExportCert.TabIndex = 0;
@@ -368,7 +368,7 @@ namespace XCI_Explorer
             // TB_ExactUsedSpace
             // 
             TB_ExactUsedSpace.Location = new System.Drawing.Point(279, 406);
-            TB_ExactUsedSpace.Margin = new Padding(6, 6, 6, 6);
+            TB_ExactUsedSpace.Margin = new Padding(6);
             TB_ExactUsedSpace.Name = "TB_ExactUsedSpace";
             TB_ExactUsedSpace.ReadOnly = true;
             TB_ExactUsedSpace.Size = new System.Drawing.Size(275, 30);
@@ -377,7 +377,7 @@ namespace XCI_Explorer
             // TB_ROMExactSize
             // 
             TB_ROMExactSize.Location = new System.Drawing.Point(279, 356);
-            TB_ROMExactSize.Margin = new Padding(6, 6, 6, 6);
+            TB_ROMExactSize.Margin = new Padding(6);
             TB_ROMExactSize.Name = "TB_ROMExactSize";
             TB_ROMExactSize.ReadOnly = true;
             TB_ROMExactSize.Size = new System.Drawing.Size(275, 30);
@@ -386,7 +386,7 @@ namespace XCI_Explorer
             // TB_UsedSpace
             // 
             TB_UsedSpace.Location = new System.Drawing.Point(141, 406);
-            TB_UsedSpace.Margin = new Padding(6, 6, 6, 6);
+            TB_UsedSpace.Margin = new Padding(6);
             TB_UsedSpace.Name = "TB_UsedSpace";
             TB_UsedSpace.ReadOnly = true;
             TB_UsedSpace.Size = new System.Drawing.Size(123, 30);
@@ -395,7 +395,7 @@ namespace XCI_Explorer
             // TB_ROMSize
             // 
             TB_ROMSize.Location = new System.Drawing.Point(141, 356);
-            TB_ROMSize.Margin = new Padding(6, 6, 6, 6);
+            TB_ROMSize.Margin = new Padding(6);
             TB_ROMSize.Name = "TB_ROMSize";
             TB_ROMSize.ReadOnly = true;
             TB_ROMSize.Size = new System.Drawing.Size(123, 30);
@@ -424,7 +424,7 @@ namespace XCI_Explorer
             // TB_MKeyRev
             // 
             TB_MKeyRev.Location = new System.Drawing.Point(350, 42);
-            TB_MKeyRev.Margin = new Padding(6, 6, 6, 6);
+            TB_MKeyRev.Margin = new Padding(6);
             TB_MKeyRev.Name = "TB_MKeyRev";
             TB_MKeyRev.ReadOnly = true;
             TB_MKeyRev.Size = new System.Drawing.Size(279, 30);
@@ -443,7 +443,7 @@ namespace XCI_Explorer
             // TB_SDKVer
             // 
             TB_SDKVer.Location = new System.Drawing.Point(473, 204);
-            TB_SDKVer.Margin = new Padding(6, 6, 6, 6);
+            TB_SDKVer.Margin = new Padding(6);
             TB_SDKVer.Name = "TB_SDKVer";
             TB_SDKVer.ReadOnly = true;
             TB_SDKVer.Size = new System.Drawing.Size(156, 30);
@@ -462,7 +462,7 @@ namespace XCI_Explorer
             // TB_Capacity
             // 
             TB_Capacity.Location = new System.Drawing.Point(473, 126);
-            TB_Capacity.Margin = new Padding(6, 6, 6, 6);
+            TB_Capacity.Margin = new Padding(6);
             TB_Capacity.Name = "TB_Capacity";
             TB_Capacity.ReadOnly = true;
             TB_Capacity.Size = new System.Drawing.Size(156, 30);
@@ -491,7 +491,7 @@ namespace XCI_Explorer
             // TB_TID
             // 
             TB_TID.Location = new System.Drawing.Point(28, 42);
-            TB_TID.Margin = new Padding(6, 6, 6, 6);
+            TB_TID.Margin = new Padding(6);
             TB_TID.Name = "TB_TID";
             TB_TID.ReadOnly = true;
             TB_TID.Size = new System.Drawing.Size(308, 30);
@@ -508,9 +508,9 @@ namespace XCI_Explorer
             tabPage2.Controls.Add(LB_SelectedData);
             tabPage2.Controls.Add(TV_Partitions);
             tabPage2.Location = new System.Drawing.Point(4, 33);
-            tabPage2.Margin = new Padding(6, 6, 6, 6);
+            tabPage2.Margin = new Padding(6);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(6, 6, 6, 6);
+            tabPage2.Padding = new Padding(6);
             tabPage2.Size = new System.Drawing.Size(659, 985);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Partitions";
@@ -519,7 +519,7 @@ namespace XCI_Explorer
             // LB_HashedRegionSize
             // 
             LB_HashedRegionSize.AutoSize = true;
-            LB_HashedRegionSize.Location = new System.Drawing.Point(11, 878);
+            LB_HashedRegionSize.Location = new System.Drawing.Point(11, 850);
             LB_HashedRegionSize.Margin = new Padding(6, 0, 6, 0);
             LB_HashedRegionSize.Name = "LB_HashedRegionSize";
             LB_HashedRegionSize.Size = new System.Drawing.Size(174, 24);
@@ -529,7 +529,7 @@ namespace XCI_Explorer
             // LB_ActualHash
             // 
             LB_ActualHash.AutoSize = true;
-            LB_ActualHash.Location = new System.Drawing.Point(11, 928);
+            LB_ActualHash.Location = new System.Drawing.Point(11, 900);
             LB_ActualHash.Margin = new Padding(6, 0, 6, 0);
             LB_ActualHash.Name = "LB_ActualHash";
             LB_ActualHash.Size = new System.Drawing.Size(117, 24);
@@ -540,7 +540,7 @@ namespace XCI_Explorer
             // LB_ExpectedHash
             // 
             LB_ExpectedHash.AutoSize = true;
-            LB_ExpectedHash.Location = new System.Drawing.Point(11, 904);
+            LB_ExpectedHash.Location = new System.Drawing.Point(11, 876);
             LB_ExpectedHash.Margin = new Padding(6, 0, 6, 0);
             LB_ExpectedHash.Name = "LB_ExpectedHash";
             LB_ExpectedHash.Size = new System.Drawing.Size(125, 24);
@@ -551,8 +551,8 @@ namespace XCI_Explorer
             // B_Extract
             // 
             B_Extract.Enabled = false;
-            B_Extract.Location = new System.Drawing.Point(543, 788);
-            B_Extract.Margin = new Padding(6, 6, 6, 6);
+            B_Extract.Location = new System.Drawing.Point(543, 760);
+            B_Extract.Margin = new Padding(6);
             B_Extract.Name = "B_Extract";
             B_Extract.Size = new System.Drawing.Size(88, 42);
             B_Extract.TabIndex = 4;
@@ -563,7 +563,7 @@ namespace XCI_Explorer
             // LB_DataSize
             // 
             LB_DataSize.AutoSize = true;
-            LB_DataSize.Location = new System.Drawing.Point(11, 854);
+            LB_DataSize.Location = new System.Drawing.Point(11, 826);
             LB_DataSize.Margin = new Padding(6, 0, 6, 0);
             LB_DataSize.Name = "LB_DataSize";
             LB_DataSize.Size = new System.Drawing.Size(48, 24);
@@ -573,7 +573,7 @@ namespace XCI_Explorer
             // LB_DataOffset
             // 
             LB_DataOffset.AutoSize = true;
-            LB_DataOffset.Location = new System.Drawing.Point(11, 830);
+            LB_DataOffset.Location = new System.Drawing.Point(11, 802);
             LB_DataOffset.Margin = new Padding(6, 0, 6, 0);
             LB_DataOffset.Name = "LB_DataOffset";
             LB_DataOffset.Size = new System.Drawing.Size(66, 24);
@@ -583,7 +583,7 @@ namespace XCI_Explorer
             // LB_SelectedData
             // 
             LB_SelectedData.AutoSize = true;
-            LB_SelectedData.Location = new System.Drawing.Point(11, 788);
+            LB_SelectedData.Location = new System.Drawing.Point(11, 760);
             LB_SelectedData.Margin = new Padding(6, 0, 6, 0);
             LB_SelectedData.Name = "LB_SelectedData";
             LB_SelectedData.Size = new System.Drawing.Size(92, 24);
@@ -595,9 +595,9 @@ namespace XCI_Explorer
             TV_Partitions.Dock = DockStyle.Top;
             TV_Partitions.HideSelection = false;
             TV_Partitions.Location = new System.Drawing.Point(6, 6);
-            TV_Partitions.Margin = new Padding(6, 6, 6, 6);
+            TV_Partitions.Margin = new Padding(6);
             TV_Partitions.Name = "TV_Partitions";
-            TV_Partitions.Size = new System.Drawing.Size(647, 766);
+            TV_Partitions.Size = new System.Drawing.Size(647, 748);
             TV_Partitions.TabIndex = 0;
             TV_Partitions.AfterSelect += TV_Partitions_AfterSelect;
             // 
@@ -616,7 +616,7 @@ namespace XCI_Explorer
             Controls.Add(TB_File);
             Controls.Add(B_LoadROM);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             MaximizeBox = false;
             Name = "MainForm";
             ShowIcon = false;

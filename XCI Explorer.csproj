@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFrameworks>net6.0-windows;net7.0-windows;net8.0-windows;net9.0-windows</TargetFrameworks>
     <OutputType>WinExe</OutputType>
     <AssemblyName>XCI-Explorer</AssemblyName>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
@@ -16,7 +16,7 @@
 	<DebugType>None</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Be.Windows.Forms.HexBox.Net5" Version="1.8.0" />
+    <PackageReference Include="Be.Windows.Forms.HexBox.Net8" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Update="tools\hactool.exe">
