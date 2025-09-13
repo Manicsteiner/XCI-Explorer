@@ -334,7 +334,7 @@ public partial class MainForm : Form
             List<char> chars = new();
             byte[] array = new byte[16];
             byte[] array2 = new byte[24];
-            _ = fileStream.Read(array, 0, 16);
+            fileStream.ReadExactly(array);
             PFS0.PFS0_Headers[0] = new(array);
             if (!PFS0.PFS0_Headers[0].Magic.Contains("PFS0"))
             {
@@ -346,7 +346,7 @@ public partial class MainForm : Form
             for (int m = 0; m < PFS0.PFS0_Headers[0].FileCount; m++)
             {
                 fileStream.Position = 16 + 24 * m;
-                _ = fileStream.Read(array2, 0, 24);
+                fileStream.ReadExactly(array2);
                 array3[m] = new(array2);
 
                 if (m == MAXFILES - 1) //Dump of TitleID 01009AA000FAA000 reports more than 10000000 files here, so it breaks the program. Standard is to have only 20 files
@@ -369,7 +369,7 @@ public partial class MainForm : Form
                 {
                     byte[] array4 = new byte[array3[n].Size];
                     fileStream.Position = 16 + 24 * PFS0.PFS0_Headers[0].FileCount + PFS0.PFS0_Headers[0].StringTableSize + array3[n].Offset;
-                    _ = fileStream.Read(array4, 0, (int)array3[n].Size);
+                    fileStream.ReadExactly(array4);
 
                     XDocument xml = XDocument.Parse(Encoding.UTF8.GetString(array4));
                     TB_TID.Text = xml.Element("ContentMeta").Element("Id").Value.Remove(1, 2).ToUpper();  //id
@@ -519,7 +519,7 @@ public partial class MainForm : Form
                                 byte[] buffer2 = new byte[56];
                                 CNMT.CNMT_Header[] array7 = new CNMT.CNMT_Header[1];
 
-                                _ = fileStream3.Read(buffer, 0, 32);
+                                fileStream3.ReadExactly(buffer);
                                 array7[0] = new CNMT.CNMT_Header(buffer);
 
                                 byte[] TitleID = BitConverter.GetBytes(array7[0].TitleID);
@@ -570,7 +570,7 @@ public partial class MainForm : Form
                                 CNMT.CNMT_Entry[] array9 = new CNMT.CNMT_Entry[array7[0].ContentCount];
                                 for (int k = 0; k < array7[0].ContentCount; k++)
                                 {
-                                    _ = fileStream3.Read(buffer2, 0, 56);
+                                    fileStream3.ReadExactly(buffer2);
                                     array9[k] = new CNMT.CNMT_Entry(buffer2);
                                     if (array9[k].Type == (byte)CNMT.CNMT_Entry.ContentType.CONTROL || array9[k].Type == (byte)CNMT.CNMT_Entry.ContentType.DATA)
                                     {
@@ -960,7 +960,7 @@ public partial class MainForm : Form
                 byte[] buffer2 = new byte[56];
                 CNMT.CNMT_Header[] array7 = new CNMT.CNMT_Header[1];
 
-                _ = fileStream3.Read(buffer, 0, 32);
+                fileStream3.ReadExactly(buffer);
                 array7[0] = new CNMT.CNMT_Header(buffer);
 
                 byte[] TitleID = BitConverter.GetBytes(array7[0].TitleID);
@@ -1007,7 +1007,7 @@ public partial class MainForm : Form
                 CNMT.CNMT_Entry[] array9 = new CNMT.CNMT_Entry[array7[0].ContentCount];
                 for (int k = 0; k < array7[0].ContentCount; k++)
                 {
-                    _ = fileStream3.Read(buffer2, 0, 56);
+                    fileStream3.ReadExactly(buffer2);
                     array9[k] = new CNMT.CNMT_Entry(buffer2);
                     if (array9[k].Type == (byte)CNMT.CNMT_Entry.ContentType.CONTROL || array9[k].Type == (byte)CNMT.CNMT_Entry.ContentType.DATA)
                     {
@@ -1238,7 +1238,7 @@ public partial class MainForm : Form
         for (int i = 0; i < HFS0.HFS0_Headers[0].FileCount; i++)
         {
             fileStream.Position = XCI.XCI_Headers[0].HFS0OffsetPartition + 16 + 64 * i;
-            _ = fileStream.Read(array2, 0, 64);
+            fileStream.ReadExactly(array2);
             array[i] = new HFS0.HSF0_Entry(array2);
             fileStream.Position = XCI.XCI_Headers[0].HFS0OffsetPartition + 16 + 64 * HFS0.HFS0_Headers[0].FileCount + array[i].Name_ptr;
             int num2;
@@ -1251,14 +1251,14 @@ public partial class MainForm : Form
             offset = num + array[i].Offset;
             hashBuffer = new byte[array[i].HashedRegionSize];
             fileStream.Position = offset;
-            _ = fileStream.Read(hashBuffer, 0, array[i].HashedRegionSize);
+            fileStream.ReadExactly(hashBuffer);
             actualHash = SHA256Bytes(hashBuffer);
 
             TV_Parti.AddFile($"{array[i].Name}.hfs0", rootNode, offset, array[i].Size, array[i].HashedRegionSize, ByteArrayToString(array[i].Hash), actualHash);
             BetterTreeNode betterTreeNode = TV_Parti.AddDir(array[i].Name, rootNode);
             HFS0.HFS0_Header[] array5 = new HFS0.HFS0_Header[1];
             fileStream.Position = array[i].Offset + num;
-            _ = fileStream.Read(array3, 0, 16);
+            fileStream.ReadExactly(array3);
             array5[0] = new HFS0.HFS0_Header(array3);
             if (array[i].Name == "secure")
             {
@@ -1282,7 +1282,7 @@ public partial class MainForm : Form
             for (int j = 0; j < array5[0].FileCount; j++)
             {
                 fileStream.Position = array[i].Offset + num + 16 + 64 * j;
-                _ = fileStream.Read(array2, 0, 64);
+                fileStream.ReadExactly(array2);
                 array6[j] = new HFS0.HSF0_Entry(array2);
                 fileStream.Position = array[i].Offset + num + 16 + 64 * array5[0].FileCount + array6[j].Name_ptr;
                 while ((num2 = fileStream.ReadByte()) != 0 && num2 != 0)
@@ -1305,7 +1305,7 @@ public partial class MainForm : Form
                 offset = array[i].Offset + array6[j].Offset + num + 16 + array5[0].StringTableSize + array5[0].FileCount * 64;
                 hashBuffer = new byte[array6[j].HashedRegionSize];
                 fileStream.Position = offset;
-                _ = fileStream.Read(hashBuffer, 0, array6[j].HashedRegionSize);
+                fileStream.ReadExactly(hashBuffer);
                 actualHash = SHA256Bytes(hashBuffer);
 
                 TV_Parti.AddFile(array6[j].Name, betterTreeNode, offset, array6[j].Size, array6[j].HashedRegionSize, ByteArrayToString(array6[j].Hash), actualHash);
@@ -1328,7 +1328,7 @@ public partial class MainForm : Form
         }
         PFS0Offset = gameNcaOffset + 32768;
         fileStream.Position = PFS0Offset;
-        _ = fileStream.Read(array3, 0, 16);
+        fileStream.ReadExactly(array3);
         PFS0.PFS0_Headers[0] = new(array3);
         if (PFS0.PFS0_Headers[0].FileCount == 2 || !LogoPartition)
         {
@@ -1345,7 +1345,7 @@ public partial class MainForm : Form
             for (int m = 0; m < PFS0.PFS0_Headers[0].FileCount; m++)
             {
                 fileStream.Position = PFS0Offset + 16 + 24 * m;
-                _ = fileStream.Read(array4, 0, 24);
+                fileStream.ReadExactly(array4);
                 array8[m] = new(array4);
                 PFS0Size += array8[m].Size;
             }
@@ -1394,7 +1394,7 @@ public partial class MainForm : Form
         List<char> chars = new();
         byte[] array = new byte[16];
         byte[] array2 = new byte[24];
-        _ = fileStream.Read(array, 0, 16);
+        fileStream.ReadExactly(array);
         PFS0.PFS0_Headers[0] = new(array);
         if (!PFS0.PFS0_Headers[0].Magic.Contains("PFS0"))
         {
@@ -1405,7 +1405,7 @@ public partial class MainForm : Form
         for (int m = 0; m < PFS0.PFS0_Headers[0].FileCount; m++)
         {
             fileStream.Position = 16 + 24 * m;
-            _ = fileStream.Read(array2, 0, 24);
+            fileStream.ReadExactly(array2);
             array3[m] = new(array2);
 
             if (m == MAXFILES - 1) //Dump of TitleID 01009AA000FAA000 reports more than 10000000 files here, so it breaks the program. Standard is to have only 20 files
@@ -1518,14 +1518,14 @@ public partial class MainForm : Form
         FileStream fileStream = new(TB_File.Text, FileMode.Open, FileAccess.Read);
         byte[] array = new byte[61440];
         byte[] array2 = new byte[16];
-        _ = fileStream.Read(array, 0, 61440);
+        fileStream.ReadExactly(array);
         XCI.XCI_Headers[0] = new XCI.XCI_Header(array);
         if (!XCI.XCI_Headers[0].Magic.Contains("HEAD"))
         {
             return false;
         }
         fileStream.Position = XCI.XCI_Headers[0].HFS0OffsetPartition;
-        _ = fileStream.Read(array2, 0, 16);
+        fileStream.ReadExactly(array2);
         HFS0.HFS0_Headers[0] = new HFS0.HFS0_Header(array2);
         fileStream.Close();
         return true;
@@ -1535,7 +1535,7 @@ public partial class MainForm : Form
     {
         FileStream fileStream = File.OpenRead(TB_File.Text);
         byte[] array = new byte[16];
-        _ = fileStream.Read(array, 0, 16);
+        fileStream.ReadExactly(array);
         PFS0.PFS0_Headers[0] = new(array);
         fileStream.Close();
         if (!PFS0.PFS0_Headers[0].Magic.Contains("PFS0"))
@@ -1565,7 +1565,7 @@ public partial class MainForm : Form
         FileStream fileStream = new(TB_File.Text, FileMode.Open, FileAccess.Read);
         byte[] array = new byte[512];
         fileStream.Position = 28672L;
-        _ = fileStream.Read(array, 0, 512);
+        fileStream.ReadExactly(array);
         File.WriteAllBytes(saveFileDialog.FileName, array);
         fileStream.Close();
         MessageBox.Show($"Cert successfully exported to:\n\n{saveFileDialog.FileName}");
@@ -1676,13 +1676,13 @@ public partial class MainForm : Form
         {
             Position = offset
         };
-        _ = fileStream.Read(array, 0, 3072);
+        fileStream.ReadExactly(array);
         File.WriteAllBytes($"{TB_File.Text}.tmp", array);
         Xts xts = XtsAes128.Create(NcaHeaderEncryptionKey1_Prod, NcaHeaderEncryptionKey2_Prod);
         using (BinaryReader binaryReader = new(File.OpenRead($"{TB_File.Text}.tmp")))
         {
             using XtsStream xtsStream = new(binaryReader.BaseStream, xts, 512);
-            _ = xtsStream.Read(array, 0, 3072);
+            xtsStream.ReadExactly(array);
         }
         File.Delete($"{TB_File.Text}.tmp");
         fileStream.Close();

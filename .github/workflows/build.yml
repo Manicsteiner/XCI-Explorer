@@ -1,0 +1,80 @@
+name: .NET Build
+
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    continue-on-error: true
+    strategy:
+      matrix:
+        dotnet_version: [ 8, 9 ]
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          show-progress: false
+
+      #- name: Add msbuild to PATH
+      #  uses: microsoft/setup-msbuild@v2
+
+      - name: Setup dotnet SDK
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ matrix.dotnet_version }}.0.x
+
+      # Restore NuGet packages
+      - name: Restore NuGet packages
+        run: dotnet restore
+
+      # Build the solution
+      - name: Build
+        run: dotnet build "XCI Explorer.sln" -c Release -f net${{ matrix.dotnet_version }}.0-windows /p:Platform="Any CPU"
+
+      # Publish the artifacts
+      - name: Publish Artifact
+        if: success() && !startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'XCI-Explorer_.net${{ matrix.dotnet_version }}_Any'
+          path: bin/Release/net${{ matrix.dotnet_version }}.0-windows
+
+      # Publish the artifacts of Release
+      - name: Publish Artifact of Release
+        if: success() && startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'XCI-Explorer_${{ github.ref_name }}_.net${{ matrix.dotnet_version }}_Any'
+          path: bin/Release/net${{ matrix.dotnet_version }}.0-windows
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download from Github
+        uses: actions/download-artifact@v4
+        with:
+          path: assets
+
+      - name: Re-zip artifacts
+        run: |
+          cd assets
+          for dir in */ ; do
+            zip -r "${dir%/}.zip" "$dir"
+          done
+        shell: bash
+
+      - name: Release to Github
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            assets/*.zip

@@ -16,7 +16,7 @@ internal static class Program
 
             using Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
             byte[] assemblyData = new byte[stream.Length];
-            stream.Read(assemblyData, 0, assemblyData.Length);
+            stream.ReadExactly(assemblyData);
             return System.Reflection.Assembly.Load(assemblyData);
         };
         Application.EnableVisualStyles();

@@ -12,7 +12,7 @@ public partial class CertForm : Form
         FileStream fileStream = new(mainForm.TB_File.Text, FileMode.Open, FileAccess.Read);
         byte[] array = new byte[512];
         fileStream.Position = 28672L;
-        fileStream.Read(array, 0, 512);
+        fileStream.ReadExactly(array);
         hbxHexView.ByteProvider = new DynamicByteProvider(array);
         fileStream.Close();
     }
