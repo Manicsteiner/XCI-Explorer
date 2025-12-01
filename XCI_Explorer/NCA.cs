@@ -20,7 +20,7 @@ internal static class NCA
         public NCA_Header(byte[] data)
         {
             Data = data;
-            Magic = Encoding.UTF8.GetString(Data.Skip(512).Take(4).ToArray());
+            Magic = Encoding.UTF8.GetString([.. Data.Skip(512).Take(4)]);
             TitleID = BitConverter.ToInt64(data, 528);
             SDKVersion1 = Data[540];
             SDKVersion2 = Data[541];

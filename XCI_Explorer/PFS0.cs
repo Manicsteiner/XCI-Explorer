@@ -17,7 +17,7 @@ internal static class PFS0
         public PFS0_Header(byte[] data)
         {
             Data = data;
-            Magic = Encoding.UTF8.GetString(Data.Take(4).ToArray());
+            Magic = Encoding.UTF8.GetString([.. Data.Take(4)]);
             FileCount = BitConverter.ToInt32(data, 4);
             StringTableSize = BitConverter.ToInt32(data, 8);
             Reserved = BitConverter.ToInt32(data, 12);

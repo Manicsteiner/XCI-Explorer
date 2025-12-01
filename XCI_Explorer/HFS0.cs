@@ -17,7 +17,7 @@ internal static class HFS0
         public HFS0_Header(byte[] data)
         {
             Data = data;
-            Magic = Encoding.UTF8.GetString(Data.Take(4).ToArray());
+            Magic = Encoding.UTF8.GetString([.. Data.Take(4)]);
             FileCount = BitConverter.ToInt32(data, 4);
             StringTableSize = BitConverter.ToInt32(data, 8);
             Reserved = BitConverter.ToInt32(data, 12);
@@ -43,7 +43,7 @@ internal static class HFS0
             Name_ptr = BitConverter.ToInt32(data, 16);
             HashedRegionSize = BitConverter.ToInt32(data, 20);
             Padding = BitConverter.ToInt64(data, 24);
-            Hash = Data.Skip(32).Take(32).ToArray();
+            Hash = [.. Data.Skip(32).Take(32)];
         }
     }
 

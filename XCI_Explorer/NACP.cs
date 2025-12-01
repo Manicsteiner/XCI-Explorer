@@ -16,8 +16,8 @@ public static class NACP
         {
             Data = data;
             Check = Data[0];
-            GameName = Encoding.UTF8.GetString(Data.Take(512).ToArray());
-            GameAuthor = Encoding.UTF8.GetString(Data.Skip(512).Take(256).ToArray());
+            GameName = Encoding.UTF8.GetString([.. Data.Take(512)]);
+            GameAuthor = Encoding.UTF8.GetString([.. Data.Skip(512).Take(256)]);
         }
     }
 
@@ -30,8 +30,8 @@ public static class NACP
         public NACP_Data(byte[] data)
         {
             Data = data;
-            GameVer = Encoding.UTF8.GetString(Data.Skip(0x60).Take(16).ToArray());
-            GameProd = Encoding.UTF8.GetString(Data.Skip(0xA8).Take(8).ToArray());
+            GameVer = Encoding.UTF8.GetString([.. Data.Skip(0x60).Take(16)]);
+            GameProd = Encoding.UTF8.GetString([.. Data.Skip(0xA8).Take(8)]);
         }
     }
 

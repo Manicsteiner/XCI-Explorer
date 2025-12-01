@@ -43,8 +43,8 @@ internal static class Util
             17 => "MasterKey16 (17.0.0-17.0.1)",
             18 => "MasterKey17 (18.0.0-18.1.0)",
             19 => "MasterKey18 (19.0.0-19.0.1)",
-            20 => "MasterKey19 (20.0.0-20.3.0?)",
-            21 => "MasterKey20",
+            20 => "MasterKey19 (20.0.0-20.5.0)",
+            21 => "MasterKey20 (21.0.0-21.0.1?)",
             22 => "MasterKey21",
             23 => "MasterKey22",
             24 => "MasterKey23",
@@ -61,9 +61,9 @@ internal static class Util
         };
     }
 
-    public static byte[] StringToByteArray(string hex) => (from x in Enumerable.Range(0, hex.Length)
+    public static byte[] StringToByteArray(string hex) => [.. (from x in Enumerable.Range(0, hex.Length)
                                                            where x % 2 == 0
-                                                           select Convert.ToByte(hex.Substring(x, 2), 16)).ToArray();
+                                                           select Convert.ToByte(hex.Substring(x, 2), 16))];
 
     public static string Base64Encode(string plainText)
     => Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));

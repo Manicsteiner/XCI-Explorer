@@ -11,7 +11,7 @@ internal static class Program
     {
         AppDomain.CurrentDomain.AssemblyResolve += (object sender, ResolveEventArgs args) =>
         {
-            System.Reflection.AssemblyName embeddedAssembly = new System.Reflection.AssemblyName(args.Name);
+            System.Reflection.AssemblyName embeddedAssembly = new(args.Name);
             string resourceName = "XCI_Explorer" + "." + embeddedAssembly.Name + ".dll";
 
             using Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);

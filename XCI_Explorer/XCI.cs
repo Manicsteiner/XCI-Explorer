@@ -18,7 +18,7 @@ public static class XCI
         public XCI_Header(byte[] data)
         {
             Data = data;
-            Magic = Encoding.UTF8.GetString(Data.Skip(256).Take(4).ToArray());
+            Magic = Encoding.UTF8.GetString([.. Data.Skip(256).Take(4)]);
             CardSize1 = Data[269];
             CardSize2 = BitConverter.ToInt64(data, 280);
             HFS0OffsetPartition = BitConverter.ToInt64(data, 304);

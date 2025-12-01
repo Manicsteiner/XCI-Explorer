@@ -40,7 +40,7 @@ internal static class CNMT
             Offset = BitConverter.ToInt16(data, 14);
             ContentCount = BitConverter.ToInt16(data, 16);
             MetaCount = BitConverter.ToInt16(data, 16);
-            Reserved2 = Data.Skip(20).Take(12).ToArray();
+            Reserved2 = [.. Data.Skip(20).Take(12)];
         }
     }
 
@@ -67,8 +67,8 @@ internal static class CNMT
         public CNMT_Entry(byte[] data)
         {
             Data = data;
-            Hash = Data.Skip(0).Take(32).ToArray();
-            NcaId = Data.Skip(32).Take(16).ToArray();
+            Hash = [.. Data.Skip(0).Take(32)];
+            NcaId = [.. Data.Skip(32).Take(16)];
             Size = BitConverter.ToInt32(data, 48) + BitConverter.ToInt16(data, 52) * 65536;
             Type = Data[54];
             Reserved = Data[55];
